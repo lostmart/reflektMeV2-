@@ -10,7 +10,7 @@
 
 <template>
 	<section class="mt-5 pb-4 border-b-2 border-lightGray">
-		<div class="flex justify-around">
+		<div class="flex justify-around md:flex-col md:h-full">
 			<button
 				v-if="store.state.activeImg"
 				v-for="(img, indx) in store.state.activeItem.options"

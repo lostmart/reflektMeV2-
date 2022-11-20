@@ -4,6 +4,7 @@
 	import PrimaryModal from './views/PrimaryModal.vue'
 	import ModalHeader from './components/ModalHeader.vue'
 	import ModalBody from './components/ModalBody.vue'
+	import BiggerModalBody from './components/BiggerModalBody.vue'
 	import ModalThumbnails from './components/ModalThumbnails.vue'
 	import SizesComp from './components/SizesComp.vue'
 	import ButtonComp from './components/ButtonComp.vue'
@@ -39,15 +40,34 @@
 		<primary-modal
 			class="absolute left-[50%] translate-x-[-50%]"
 			v-if="store.state.showModal">
-			<ModalHeader />
+			<div class="block md:hidden">
+				<!--- only shows in mobile    --->
+				<ModalHeader />
 
-			<ModalBody />
+				<ModalBody />
 
-			<ModalThumbnails />
+				<ModalThumbnails />
 
-			<SizesComp class="mt-[10px]" />
+				<SizesComp class="mt-[10px]" />
 
-			<ModalFooter />
+				<ModalFooter />
+			</div>
+
+			<div class="hidden md:flex">
+				<!--- only shows after  ('md': '768px')   --->
+				<ModalBody class="w-1/2" />
+				<div class="grid grid-cols-2 w-1/2">
+					<ModalThumbnails />
+
+					<div>
+						<ModalHeader />
+
+						<SizesComp />
+
+						<ModalFooter />
+					</div>
+				</div>
+			</div>
 		</primary-modal>
 	</div>
 </template>
