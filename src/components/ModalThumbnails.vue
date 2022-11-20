@@ -17,7 +17,7 @@
 				v-for="(img, indx) in store.state.activeItem.options"
 				:key="indx"
 				@click="changeActive(img.imgUrl, indx)"
-				class="flex justify-center items-center truncate w-[113px] h-[113px] border border-black">
+				class="flex justify-center items-center truncate w-[113px] h-[113px]">
 				<div class="flex justify-center items-center w-[105px]">
 					<img :src="img.imgUrl" :alt="img.altTxt" class="min-w-[255px]" />
 				</div>
