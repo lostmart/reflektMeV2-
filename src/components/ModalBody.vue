@@ -9,7 +9,7 @@
 		<div
 			class="flex items-end h-[283px] translate-x-6 md:absolute z-10 md:bottom-0 md:-left-[1em] md:bg-[#ffffff87] md:h-full">
 			<span v-if="store.state.activeItem" class="block rotate-90 p-2">
-				{{ store.state.activeMediaInd + 1 }} /
+				{{ store.state.activeThumbnail + 1 }} /
 				{{ store.state.activeItem.options.length }}
 			</span>
 		</div>

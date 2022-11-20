@@ -31,6 +31,14 @@
 				{
 					"imgUrl": "/imgs/img-12.jpeg",
 					"altTxt": "medium size dress"
+				},
+				{
+					"imgUrl": "/imgs/img-03.jpeg",
+					"altTxt": "medium size dress"
+				},
+				{
+					"imgUrl": "/imgs/img-02.jpeg",
+					"altTxt": "medium size dress"
 				}
 			]
 		},

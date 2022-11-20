@@ -7,6 +7,7 @@ export default createStore({
 		activeImg: '',
 		mediaArray: [],
 		activeMediaInd: 0,
+		activeThumbnail: 0,
 	},
 	getters: {},
 	mutations: {
@@ -24,6 +25,9 @@ export default createStore({
 		},
 		setActiveMediaInd(state, payload) {
 			state.activeMediaInd = payload
+		},
+		setActiveThumbnail(state, payload) {
+			state.activeThumbnail = payload
 		},
 	},
 	actions: {},

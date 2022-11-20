@@ -3,8 +3,9 @@
 	const store = useStore()
 	const imgs = ['/imgs/img-01.jpeg', '/imgs/img-02.jpeg', '/imgs/img-03.jpeg']
 
-	const changeActive = (img) => {
+	const changeActive = (img, indx) => {
 		store.commit('setActiveImg', img)
+		store.commit('setActiveThumbnail', indx)
 	}
 </script>
 
@@ -15,7 +16,7 @@
 				v-if="store.state.activeImg"
 				v-for="(img, indx) in store.state.activeItem.options"
 				:key="indx"
-				@click="changeActive(img.imgUrl)"
+				@click="changeActive(img.imgUrl, indx)"
 				class="flex justify-center items-center truncate w-[113px] h-[113px] border border-black">
 				<div class="flex justify-center items-center w-[105px]">
 					<img :src="img.imgUrl" :alt="img.altTxt" class="min-w-[255px]" />

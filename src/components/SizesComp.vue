@@ -5,6 +5,7 @@
 		store.commit('setActiveItem', store.state.mediaArray[num])
 		store.commit('setActiveImg', store.state.activeItem.options[0].imgUrl)
 		store.commit('setActiveMediaInd', num)
+		store.commit('setActiveThumbnail', 0)
 	}
 </script>
 
