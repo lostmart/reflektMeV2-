@@ -44,7 +44,7 @@
 				<!--- only shows in mobile    --->
 				<ModalHeader />
 
-				<ModalBody />
+				<ModalBody class="max-w-sm mx-auto" />
 
 				<ModalThumbnails />
 
@@ -56,15 +56,15 @@
 			<div class="hidden md:flex">
 				<!--- only shows after  ('md': '768px')   --->
 				<ModalBody class="w-1/2" />
-				<div class="grid grid-cols-2 w-1/2">
+				<div class="grid grid-cols-3 w-1/2">
 					<ModalThumbnails />
 
-					<div>
+					<div class="col-span-2 relative">
 						<ModalHeader />
 
 						<SizesComp />
 
-						<ModalFooter />
+						<ModalFooter class="absolute bottom-4 right-4" />
 					</div>
 				</div>
 			</div>
