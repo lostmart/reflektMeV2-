@@ -1,11 +1,19 @@
 <script setup>
+	import { useStore } from 'vuex'
 	import ModalHeader from '../components/ModalHeader.vue'
+	const store = useStore()
 </script>
 
 <template>
-	<div
-		class="inset-y-1 bg-white w-11/12 h-screen max-w-screen-sm md:max-w-screen-xl">
+	<div class="inset-y-1 bg-white w-11/12 h-screen max-w-screen-sm md:max-w-xl">
 		<ModalHeader />
-		<h2 class="mt-4 text-center">This is the share modal</h2>
+		<div
+			class="flex items-center justify-center overflow-hidden max-h-[356px] max-w-[286px] m-auto">
+			<img :src="store.state.activeImg" alt="" class="min-w-[800px]" />
+		</div>
+		<p class="mt-8 mx-auto max-w-[286px] text-center">
+			Check out my Levis.com Reflektion for (insert product name and link here)
+		</p>
+		<button class="mt-8 block mx-auto text-center border p-4">Copy link</button>
 	</div>
 </template>
