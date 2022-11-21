@@ -2,6 +2,15 @@
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
 	const store = useStore()
+
+	const toggleFullScreen = () => {
+		store.commit('toggleFullScreenModal', true)
+	}
+
+	const toggleShareModal = () => {
+		store.commit('toggleModal', true)
+		store.commit('toggleShareModal', true)
+	}
 </script>
 
 <template>
@@ -14,6 +23,9 @@
 			</span>
 		</div>
 		<div
+			role="button"
+			aria-pressed="false"
+			@click="toggleFullScreen"
 			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[226px] max-w-[405px] h-[282.7px] md:relative md:w-full md:h-full md:top-0">
 			<img
 				v-if="store.state.activeItem"
@@ -22,6 +34,7 @@
 				class="min-w-fit mx-auto" />
 		</div>
 		<button
+			@click="toggleShareModal"
 			class="translate-x-[-10px] md:absolute md:transform-none right-4 top-2">
 			<img :src="shareBtn" alt="share button" />
 		</button>
