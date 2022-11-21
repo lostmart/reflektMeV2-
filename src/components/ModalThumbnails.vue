@@ -1,7 +1,6 @@
 <script setup>
 	import { useStore } from 'vuex'
 	const store = useStore()
-	const imgs = ['/imgs/img-01.jpeg', '/imgs/img-02.jpeg', '/imgs/img-03.jpeg']
 
 	const changeActive = (img, indx) => {
 		store.commit('setActiveImg', img)
@@ -17,11 +16,20 @@
 				v-for="(img, indx) in store.state.activeItem.options"
 				:key="indx"
 				@click="changeActive(img.imgUrl, indx)"
-				class="flex justify-center items-center truncate w-[113px] h-[113px]">
-				<div class="flex justify-center items-center w-[105px]">
+				class="flex justify-center items-center truncate w-[110px] h-[113px] border-4 border-white relative"
+				:class="{ 'active-btn': img.imgUrl === store.state.activeImg }">
+				<div class="flex justify-center items-center w-[105px] thumb-btn">
 					<img :src="img.imgUrl" :alt="img.altTxt" class="min-w-[255px]" />
 				</div>
 			</button>
 		</div>
 	</section>
 </template>
+
+<style scoped>
+	.active-btn {
+		box-shadow: 0px 0px 0 2px #403e3f;
+		z-index: 1050;
+		border-radius: 2px;
+	}
+</style>

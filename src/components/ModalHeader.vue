@@ -4,10 +4,16 @@
 	import closeBtn from '../assets/x.svg'
 	const store = useStore()
 	const haddleClick = () => {
-		store.state.showFullScreenModal
-			? store.commit('toggleModal', null)
-			: store.commit('toggleShareModal', null),
+		// store.state.showModal
+		// 	? store.commit('toggleModal', null)
+		// 	: store.commit('toggleShareModal', null),
+		// 	store.commit('toggleModal', null)
+		if (store.state.showModal) {
 			store.commit('toggleModal', null)
+		} else {
+			store.commit('toggleShareModal', null)
+			store.commit('toggleModal', null)
+		}
 	}
 </script>
 

@@ -11,6 +11,9 @@
 		store.commit('toggleModal', true)
 		store.commit('toggleShareModal', true)
 	}
+	const triggerZoom = () => {
+		console.log('zoommmiong .....')
+	}
 </script>
 
 <template>

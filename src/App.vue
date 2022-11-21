@@ -92,7 +92,7 @@
 		</full-screen-modal>
 		<share-modal
 			class="absolute left-[50%] translate-x-[-50%] top-2"
-			v-if="store.state.showShareModal"></share-modal>
+			v-if="store.state.shareModal"></share-modal>
 	</div>
 </template>
 

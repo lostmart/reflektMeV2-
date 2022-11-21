@@ -20,7 +20,7 @@ export default createStore({
 			state.showFullScreenModal = !state.showFullScreenModal
 		},
 		toggleShareModal(state) {
-			state.showShareModal = !state.showShareModal
+			state.shareModal = !state.shareModal
 		},
 		setActiveItem(state, payload) {
 			state.activeItem = payload
