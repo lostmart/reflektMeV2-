@@ -10,6 +10,7 @@ export default createStore({
 		mediaArray: [],
 		activeMediaInd: 0,
 		activeThumbnail: 0,
+		desktopZoom: false,
 	},
 	getters: {},
 	mutations: {
@@ -36,6 +37,9 @@ export default createStore({
 		},
 		setActiveThumbnail(state, payload) {
 			state.activeThumbnail = payload
+		},
+		toggleDesktopZoom(state, payload) {
+			state.desktopZoom = payload
 		},
 	},
 	actions: {},

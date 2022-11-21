@@ -59,7 +59,7 @@
 			<div class="hidden md:flex">
 				<!--- only shows after  ('md': '768px')   --->
 				<ModalBody class="w-1/2" />
-				<div class="grid grid-cols-3 w-1/2">
+				<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
 					<ModalThumbnails />
 
 					<div class="col-span-2 relative">
@@ -69,6 +69,11 @@
 
 						<ModalFooter class="absolute bottom-4 right-4" />
 					</div>
+				</div>
+				<div
+					v-if="store.state.desktopZoom"
+					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center">
+					<h2>zoom will be here ...</h2>
 				</div>
 			</div>
 		</primary-modal>

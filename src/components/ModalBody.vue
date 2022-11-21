@@ -29,12 +29,16 @@
 			role="button"
 			aria-pressed="false"
 			@click="toggleFullScreen"
+			@mousemove="triggerZoom"
+			@mouseenter="store.commit('toggleDesktopZoom', true)"
+			@mouseleave="store.commit('toggleDesktopZoom', false)"
 			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[226px] max-w-[405px] h-[282.7px] md:relative md:w-full md:h-full md:top-0">
 			<img
 				v-if="store.state.activeItem"
 				:src="store.state.activeImg"
 				alt="levis image"
-				class="min-w-fit mx-auto" />
+				@onmousemove="triggerZoom"
+				class="min-w-fit mx-auto z-50" />
 		</div>
 		<button
 			@click="toggleShareModal"
