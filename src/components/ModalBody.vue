@@ -5,14 +5,15 @@
 
 	const toggleFullScreen = () => {
 		store.commit('toggleFullScreenModal', true)
+		store.commit('toggleDesktopZoom', false)
 	}
 
 	const toggleShareModal = () => {
 		store.commit('toggleModal', true)
 		store.commit('toggleShareModal', true)
 	}
-	const triggerZoom = () => {
-		console.log('zoommmiong .....')
+	const triggerZoom = (e) => {
+		console.log(e)
 	}
 </script>
 
@@ -32,12 +33,13 @@
 			@mousemove="triggerZoom"
 			@mouseenter="store.commit('toggleDesktopZoom', true)"
 			@mouseleave="store.commit('toggleDesktopZoom', false)"
-			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[226px] max-w-[405px] h-[282.7px] md:relative md:w-full md:h-full md:top-0">
+			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[226px] max-w-[405px] h-[282.7px] md:relative md:w-full md:h-full md:top-0"
+			ref="image">
 			<img
 				v-if="store.state.activeItem"
 				:src="store.state.activeImg"
 				alt="levis image"
-				@onmousemove="triggerZoom"
+				@onmousemove="triggerZoom(e)"
 				class="min-w-fit mx-auto z-50" />
 		</div>
 		<button

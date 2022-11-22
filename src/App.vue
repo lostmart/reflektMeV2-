@@ -70,10 +70,14 @@
 						<ModalFooter class="absolute bottom-4 right-4" />
 					</div>
 				</div>
+				<!---  ZOOMED CONTAINER  -->
 				<div
 					v-if="store.state.desktopZoom"
-					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center">
-					<h2>zoom will be here ...</h2>
+					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center overflow-hidden relative">
+					<img
+						class="min-w-[2000px] absolute"
+						:src="store.state.activeImg"
+						alt="see it in my size" />
 				</div>
 			</div>
 		</primary-modal>
