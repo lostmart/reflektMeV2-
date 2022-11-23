@@ -1,7 +1,16 @@
 <script setup>
+	import { useMouse } from '../utils/mouseTrack.js'
+	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
+
+	const emit = defineEmits(['zoomCoord'])
+
 	const store = useStore()
+
+	const image = ref()
+
+	// const { x, y } = useMouse()
 
 	const toggleFullScreen = () => {
 		store.commit('toggleFullScreenModal', true)
@@ -13,7 +22,10 @@
 		store.commit('toggleShareModal', true)
 	}
 	const triggerZoom = (e) => {
-		console.log(e)
+		const img = image.value.getBoundingClientRect()
+		const zoomX = e.pageX - img.left
+		const zoomY = e.pageY - img.top
+		emit('zoomCoord', { zoomX, zoomY })
 	}
 </script>
 
@@ -44,7 +56,7 @@
 		</div>
 		<button
 			@click="toggleShareModal"
-			class="translate-x-[-10px] md:absolute md:transform-none right-4 top-2">
+			class="translate-x-[-10px] md:absolute md:transform-none right-4 top-2 z-50">
 			<img :src="shareBtn" alt="share button" />
 		</button>
 	</section>

@@ -1,5 +1,6 @@
 <script setup>
 	import './assets/tailwind.css'
+	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import PrimaryModal from './views/PrimaryModal.vue'
 	import FullScreenModal from './views/FullScreenModal.vue'
@@ -13,8 +14,18 @@
 	import closeBtn from './assets/x.svg'
 
 	const store = useStore()
+	const imageCont = ref()
+
 	const toggleModal = () => {
 		store.commit('toggleModal', null)
+	}
+
+	const zoomCoordData = ref({ zoomX: '', zoomY: '' })
+	const ratio = 0.6367
+
+	const handleZoom = (data) => {
+		zoomCoordData.value.zoomX = 140 + data.zoomX / 2.5
+		zoomCoordData.value.zoomY = data.zoomY / 2
 	}
 
 	/* data fetch */
@@ -58,7 +69,7 @@
 
 			<div class="hidden md:flex">
 				<!--- only shows after  ('md': '768px')   --->
-				<ModalBody class="w-1/2" />
+				<ModalBody @zoomCoord="handleZoom" class="w-1/2" />
 				<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
 					<ModalThumbnails />
 
@@ -73,11 +84,29 @@
 				<!---  ZOOMED CONTAINER  -->
 				<div
 					v-if="store.state.desktopZoom"
-					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center overflow-hidden relative">
+					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center overflow-hidden relative"
+					ref="imageCont">
+					<div
+						class="w-full h-full zoomedImg"
+						:style="{
+							backgroundImage: 'url(' + store.state.activeImg + ')',
+							backgroundPosition:
+								'-' + zoomCoordData.zoomX + 'px -' + zoomCoordData.zoomY + 'px',
+						}"></div>
+					<!--- 
 					<img
-						class="min-w-[2000px] absolute"
+						class="absolute min-w-[1090px]"
+						:style="{
+							transform:
+								'translate(-' +
+								zoomCoordData.zoomX +
+								'px,  -' +
+								+zoomCoordData.zoomY +
+								'px) scale(2)',
+						}"
 						:src="store.state.activeImg"
 						alt="see it in my size" />
+						-->
 				</div>
 			</div>
 		</primary-modal>
@@ -106,6 +135,10 @@
 </template>
 
 <style scoped>
+	.zoomedImg {
+		background-repeat: no-repeat;
+		transform: scale(2) translateY(150px);
+	}
 	footer {
 		font-family: 'Helvetica Now Text ';
 		font-weight: 300;
