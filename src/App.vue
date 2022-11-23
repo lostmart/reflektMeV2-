@@ -24,7 +24,7 @@
 	const ratio = 0.6367
 
 	const handleZoom = (data) => {
-		zoomCoordData.value.zoomX = 140 + data.zoomX / 2.5
+		zoomCoordData.value.zoomX = 180 + data.zoomX / 2.8
 		zoomCoordData.value.zoomY = data.zoomY / 2
 	}
 
@@ -84,7 +84,7 @@
 				<!---  ZOOMED CONTAINER  -->
 				<div
 					v-if="store.state.desktopZoom"
-					class="mt-9 h-[39rem] w-1/2 bg-slate-300 flex items-center justify-center overflow-hidden relative"
+					class="mt-9 h-[39rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
 					ref="imageCont">
 					<div
 						class="w-full h-full zoomedImg"
@@ -137,7 +137,7 @@
 <style scoped>
 	.zoomedImg {
 		background-repeat: no-repeat;
-		transform: scale(2) translateY(150px);
+		transform: scale(2.2) translate(90px, 150px);
 	}
 	footer {
 		font-family: 'Helvetica Now Text ';
