@@ -6,3 +6,18 @@
 		<slot></slot>
 	</div>
 </template>
+
+<style>
+	html {
+		overflow: scroll;
+		overflow-x: hidden;
+	}
+
+	::-webkit-scrollbar {
+		width: 0px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #ff0000;
+	}
+</style>

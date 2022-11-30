@@ -51,65 +51,71 @@
 			@click="toggleModal"
 			class="mx-auto my-2 block p-4 border rounded-sm"
 			btnMsg="See It In My Size" />
-		<primary-modal
-			class="absolute left-[50%] translate-x-[-50%]"
-			v-if="store.state.showModal && !store.state.showFullScreenModal">
-			<div class="block md:hidden">
-				<!--- only shows in mobile    --->
-				<ModalHeader />
+		<transition name="mainTransition">
+			<primary-modal
+				class="absolute left-[50%] translate-x-[-50%]"
+				v-if="store.state.showModal && !store.state.showFullScreenModal">
+				<div class="block md:hidden">
+					<!--- only shows in mobile    --->
+					<ModalHeader />
 
-				<ModalBody class="max-w-sm mx-auto" />
+					<ModalBody class="max-w-sm mx-auto" />
 
-				<ModalThumbnails />
-
-				<SizesComp class="mt-[10px]" />
-
-				<ModalFooter />
-			</div>
-
-			<div class="hidden md:flex">
-				<!--- only shows after  ('md': '768px')   --->
-				<ModalBody @zoomCoord="handleZoom" class="w-1/2" />
-				<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
 					<ModalThumbnails />
 
-					<div class="col-span-2 relative">
-						<ModalHeader />
+					<SizesComp class="mt-[10px]" />
 
-						<SizesComp />
-
-						<ModalFooter class="absolute bottom-4 right-4" />
-					</div>
+					<ModalFooter />
 				</div>
-				<!---  ZOOMED CONTAINER  -->
-				<div
-					v-if="store.state.desktopZoom"
-					class="mt-9 h-[39rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
-					ref="imageCont">
+
+				<div class="hidden md:flex">
+					<!--- only shows after  ('md': '768px')   --->
+					<ModalBody @zoomCoord="handleZoom" class="w-1/2" />
+					<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
+						<ModalThumbnails />
+
+						<div class="col-span-2 relative">
+							<ModalHeader />
+
+							<SizesComp />
+
+							<ModalFooter class="absolute bottom-4 right-4" />
+						</div>
+					</div>
+					<!---  ZOOMED CONTAINER  -->
 					<div
-						class="w-full h-full zoomedImg"
-						:style="{
-							backgroundImage: 'url(' + store.state.activeImg + ')',
-							backgroundPosition:
-								'-' + zoomCoordData.zoomX + 'px -' + zoomCoordData.zoomY + 'px',
-						}"></div>
-					<!--- 
-					<img
+						v-if="store.state.desktopZoom"
+						class="mt-9 h-[39rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
+						ref="imageCont">
+						<div
+							class="w-full h-full zoomedImg"
+							:style="{
+								backgroundImage: 'url(' + store.state.activeImg + ')',
+								backgroundPosition:
+									'-' +
+									zoomCoordData.zoomX +
+									'px -' +
+									zoomCoordData.zoomY +
+									'px',
+							}"></div>
+						<!--- 
+						<img
 						class="absolute min-w-[1090px]"
 						:style="{
 							transform:
-								'translate(-' +
-								zoomCoordData.zoomX +
-								'px,  -' +
-								+zoomCoordData.zoomY +
-								'px) scale(2)',
+							'translate(-' +
+							zoomCoordData.zoomX +
+							'px,  -' +
+							+zoomCoordData.zoomY +
+							'px) scale(2)',
 						}"
 						:src="store.state.activeImg"
 						alt="see it in my size" />
-						-->
+					-->
+					</div>
 				</div>
-			</div>
-		</primary-modal>
+			</primary-modal>
+		</transition>
 
 		<full-screen-modal
 			class="absolute left-[50%] translate-x-[-50%] top-2"
@@ -142,5 +148,22 @@
 	footer {
 		font-family: 'Helvetica Now Text ';
 		font-weight: 300;
+	}
+
+	/*  transitions   */
+	.mainTransition-enter-active {
+		animation: finished 0.5s reverse ease-in-out;
+	}
+	.mainTransition-leave-active {
+		animation: finished 0.5s ease-in-out;
+	}
+	@keyframes finished {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0;
+			top: -100px;
+		}
 	}
 </style>
