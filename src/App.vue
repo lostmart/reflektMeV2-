@@ -1,4 +1,5 @@
 <script setup>
+	import VueMeta from 'vue-meta'
 	import './assets/tailwind.css'
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
@@ -12,6 +13,7 @@
 	import ButtonComp from './components/ButtonComp.vue'
 	import ModalFooter from './components/ModalFooter.vue'
 	import closeBtn from './assets/x.svg'
+	const { generate } = VueMeta
 
 	const store = useStore()
 	const imageCont = ref()
