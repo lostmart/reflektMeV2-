@@ -1,6 +1,4 @@
 <script setup>
-	import VueMeta from 'vue-meta'
-	import './assets/tailwind.css'
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import PrimaryModal from './views/PrimaryModal.vue'
@@ -13,7 +11,7 @@
 	import ButtonComp from './components/ButtonComp.vue'
 	import ModalFooter from './components/ModalFooter.vue'
 	import closeBtn from './assets/x.svg'
-	const { generate } = VueMeta
+
 	const store = useStore()
 	const imageCont = ref()
 	const toggleModal = () => {
@@ -43,122 +41,11 @@
 </script>
 
 <template>
-	<div>
-		<transition name="mainTransition">
-			<primary-modal
-				class="absolute left-[50%] translate-x-[-50%]"
-				v-if="store.state.showModal && !store.state.showFullScreenModal">
-				<div class="block md:hidden">
-					<!--- only shows in mobile    --->
-					<ModalHeader />
-					<ModalBody class="max-w-sm mx-auto" />
-					<ModalThumbnails />
-					<SizesComp class="mt-[10px]" />
-					<ModalFooter />
-				</div>
-				<div class="hidden md:flex">
-					<!--- only shows after  ('md': '768px')   --->
-					<ModalBody @zoomCoord="handleZoom" class="w-1/2" />
-					<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
-						<ModalThumbnails />
-						<div class="col-span-2 relative">
-							<ModalHeader />
-							<SizesComp />
-							<ModalFooter class="absolute bottom-4 right-4" />
-						</div>
-					</div>
-					<!---  ZOOMED CONTAINER  -->
-					<div
-						v-if="store.state.desktopZoom"
-						class="mt-9 h-[39rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
-						ref="imageCont">
-						<div
-							class="w-full h-full zoomedImg"
-							:style="{
-								backgroundImage: 'url(' + store.state.activeImg + ')',
-								backgroundPosition:
-									'-' +
-									zoomCoordData.zoomX +
-									'px -' +
-									zoomCoordData.zoomY +
-									'px',
-							}"></div>
-						<!--- 
-						<img
-						class="absolute min-w-[1090px]"
-						:style="{
-							transform:
-							'translate(-' +
-							zoomCoordData.zoomX +
-							'px,  -' +
-							+zoomCoordData.zoomY +
-							'px) scale(2)',
-						}"
-						:src="store.state.activeImg"
-						alt="see it in my size" />
-					-->
-					</div>
-				</div>
-			</primary-modal>
-		</transition>
-
-		<full-screen-modal
-			class="absolute left-[50%] translate-x-[-50%] top-2"
-			v-if="store.state.showFullScreenModal">
-			<div
-				class="flex items-center justify-center relative max-w-[375px] overflow-hidden m-auto">
-				<button
-					class="absolute w-[40px] top-2 right-2 bg-white rounded-full p-2"
-					@click="store.commit('toggleFullScreenModal', null)"
-					aria-label="Close">
-					<img :src="closeBtn" alt="close button" />
-				</button>
-				<img
-					class="min-w-[835px]"
-					:src="store.state.activeImg"
-					alt="full screen size image" />
-			</div>
-		</full-screen-modal>
-		<share-modal
-			class="absolute left-[50%] translate-x-[-50%] top-2"
-			v-if="store.state.shareModal"></share-modal>
-	</div>
-	<!----->
+	<!--- 
 	<nav>
 		<router-link to="/">Home</router-link> |
 		<router-link to="/about">About</router-link>
 	</nav>
-
-	<ButtonComp
-		@click="toggleModal"
-		class="mx-auto my-2 block p-4 border rounded-sm"
-		btnMsg="See It In My Size" />
+	-->
 	<router-view />
 </template>
-
-<style scoped>
-	.zoomedImg {
-		background-repeat: no-repeat;
-		transform: scale(2.2) translate(90px, 150px);
-	}
-	footer {
-		font-family: 'Helvetica Now Text ';
-		font-weight: 300;
-	}
-	/*  transitions   */
-	.mainTransition-enter-active {
-		animation: finished 0.5s reverse ease-in-out;
-	}
-	.mainTransition-leave-active {
-		animation: finished 0.5s ease-in-out;
-	}
-	@keyframes finished {
-		0% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-			top: -100px;
-		}
-	}
-</style>
