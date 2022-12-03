@@ -14,22 +14,17 @@
 	import ModalFooter from './components/ModalFooter.vue'
 	import closeBtn from './assets/x.svg'
 	const { generate } = VueMeta
-
 	const store = useStore()
 	const imageCont = ref()
-
 	const toggleModal = () => {
 		store.commit('toggleModal', null)
 	}
-
 	const zoomCoordData = ref({ zoomX: '', zoomY: '' })
 	const ratio = 0.6367
-
 	const handleZoom = (data) => {
 		zoomCoordData.value.zoomX = 180 + data.zoomX / 2.8
 		zoomCoordData.value.zoomY = data.zoomY / 2
 	}
-
 	/* data fetch */
 	const fetchData = async () => {
 		try {
@@ -49,10 +44,6 @@
 
 <template>
 	<div>
-		<ButtonComp
-			@click="toggleModal"
-			class="mx-auto my-2 block p-4 border rounded-sm"
-			btnMsg="See It In My Size" />
 		<transition name="mainTransition">
 			<primary-modal
 				class="absolute left-[50%] translate-x-[-50%]"
@@ -60,27 +51,19 @@
 				<div class="block md:hidden">
 					<!--- only shows in mobile    --->
 					<ModalHeader />
-
 					<ModalBody class="max-w-sm mx-auto" />
-
 					<ModalThumbnails />
-
 					<SizesComp class="mt-[10px]" />
-
 					<ModalFooter />
 				</div>
-
 				<div class="hidden md:flex">
 					<!--- only shows after  ('md': '768px')   --->
 					<ModalBody @zoomCoord="handleZoom" class="w-1/2" />
 					<div v-if="!store.state.desktopZoom" class="grid grid-cols-3 w-1/2">
 						<ModalThumbnails />
-
 						<div class="col-span-2 relative">
 							<ModalHeader />
-
 							<SizesComp />
-
 							<ModalFooter class="absolute bottom-4 right-4" />
 						</div>
 					</div>
@@ -140,6 +123,17 @@
 			class="absolute left-[50%] translate-x-[-50%] top-2"
 			v-if="store.state.shareModal"></share-modal>
 	</div>
+	<!----->
+	<nav>
+		<router-link to="/">Home</router-link> |
+		<router-link to="/about">About</router-link>
+	</nav>
+
+	<ButtonComp
+		@click="toggleModal"
+		class="mx-auto my-2 block p-4 border rounded-sm"
+		btnMsg="See It In My Size" />
+	<router-view />
 </template>
 
 <style scoped>
@@ -151,7 +145,6 @@
 		font-family: 'Helvetica Now Text ';
 		font-weight: 300;
 	}
-
 	/*  transitions   */
 	.mainTransition-enter-active {
 		animation: finished 0.5s reverse ease-in-out;
