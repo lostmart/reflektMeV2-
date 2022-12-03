@@ -3,7 +3,7 @@
 	import { useStore } from 'vuex'
 	import PrimaryModal from './PrimaryModal.vue'
 	import FullScreenModal from './FullScreenModal.vue'
-	import ShareModal from './ShareModal.vue'
+	// import ShareModal from './ShareModal.vue'
 	import ModalHeader from '../components/ModalHeader.vue'
 	import ModalBody from '../components/ModalBody.vue'
 	import ModalThumbnails from '../components/ModalThumbnails.vue'
@@ -116,10 +116,11 @@
 					alt="full screen size image" />
 			</div>
 		</full-screen-modal>
-		<share-modal
+		<!---
+			<share-modal
 			class="absolute left-[50%] translate-x-[-50%] top-2"
 			v-if="store.state.shareModal"></share-modal>
-	</div>
+		--></div>
 
 	<ButtonComp
 		@click="toggleModal"

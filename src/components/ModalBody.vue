@@ -1,5 +1,4 @@
 <script setup>
-	import { useMouse } from '../utils/mouseTrack.js'
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
@@ -9,8 +8,6 @@
 	const store = useStore()
 
 	const image = ref()
-
-	// const { x, y } = useMouse()
 
 	const toggleFullScreen = () => {
 		store.commit('toggleFullScreenModal', true)
@@ -45,7 +42,7 @@
 			@mousemove="triggerZoom"
 			@mouseenter="store.commit('toggleDesktopZoom', true)"
 			@mouseleave="store.commit('toggleDesktopZoom', false)"
-			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[247px] max-w-[405px] h-[340px] md:relative md:w-full md:h-full md:top-0"
+			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[255px] max-w-[405px] h-[340px] md:relative md:w-full md:h-full md:top-0"
 			ref="image">
 			<img
 				v-if="store.state.activeItem"
@@ -54,10 +51,10 @@
 				@onmousemove="triggerZoom(e)"
 				class="min-w-fit mx-auto z-40" />
 		</div>
-		<button
-			@click="toggleShareModal"
+		<router-link
+			to="/share"
 			class="md:translate-x-[-10px] md:absolute md:transform-none right-4 top-2 z-50">
 			<img :src="shareBtn" alt="share button" />
-		</button>
+		</router-link>
 	</section>
 </template>
