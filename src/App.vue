@@ -1,16 +1,6 @@
 <script setup>
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
-	import PrimaryModal from './views/PrimaryModal.vue'
-	import FullScreenModal from './views/FullScreenModal.vue'
-	import ShareModal from './views/ShareModal.vue'
-	import ModalHeader from './components/ModalHeader.vue'
-	import ModalBody from './components/ModalBody.vue'
-	import ModalThumbnails from './components/ModalThumbnails.vue'
-	import SizesComp from './components/SizesComp.vue'
-	import ButtonComp from './components/ButtonComp.vue'
-	import ModalFooter from './components/ModalFooter.vue'
-	import closeBtn from './assets/x.svg'
 
 	const store = useStore()
 	const imageCont = ref()

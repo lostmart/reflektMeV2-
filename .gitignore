@@ -5,7 +5,9 @@ node_modules
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 
+#local testing
 test.html
+/API
 
 # local env files
 .env.local

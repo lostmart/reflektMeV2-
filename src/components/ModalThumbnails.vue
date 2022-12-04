@@ -5,6 +5,9 @@
 	const changeActive = (img, indx) => {
 		store.commit('setActiveImg', img)
 		store.commit('setActiveThumbnail', indx)
+		store.dispatch('userBehavior', {
+			btn: 'thumbnails',
+		})
 	}
 </script>
 
@@ -16,9 +19,9 @@
 				v-for="(img, indx) in store.state.activeItem.options"
 				:key="indx"
 				@click="changeActive(img.imgUrl, indx)"
-				class="flex justify-center items-center truncate w-[110px] h-[113px] border-4 border-white relative"
+				class="flex justify-center items-center truncate w-[91px] h-[115px] border-4 border-white relative"
 				:class="{ 'active-btn': img.imgUrl === store.state.activeImg }">
-				<div class="flex justify-center items-center w-[105px] thumb-btn">
+				<div class="flex justify-center items-center w-full thumb-btn">
 					<img :src="img.imgUrl" :alt="img.altTxt" class="min-w-[255px]" />
 				</div>
 			</button>

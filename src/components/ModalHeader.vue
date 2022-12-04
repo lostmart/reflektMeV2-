@@ -13,7 +13,7 @@
 		// 	: store.commit('toggleShareModal', null),
 		// 	store.commit('toggleModal', null)
 		if (store.state.showModal) {
-			// store.commit('toggleModal', null)
+			store.commit('toggleModal', null)
 			router.push('/')
 		} else {
 			store.commit('toggleShareModal', null)

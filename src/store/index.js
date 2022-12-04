@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import axios from 'axios'
 
 export default createStore({
 	state: {
@@ -11,6 +12,10 @@ export default createStore({
 		activeMediaInd: 0,
 		activeThumbnail: 0,
 		desktopZoom: false,
+		// agent data
+		userID: Math.floor(Math.random() * 1000000),
+		productId: 'temporary product ID',
+		trackingId: 'some tracking ID',
 	},
 	getters: {},
 	mutations: {
@@ -42,6 +47,28 @@ export default createStore({
 			state.desktopZoom = payload
 		},
 	},
-	actions: {},
+	actions: {
+		async userBehavior({ state }, payload) {
+			const currentDate = new Date()
+			const currentMonth = currentDate.getMonth() + 1
+			const currentDay = currentDate.getDate()
+			const currentYear = currentDate.getFullYear()
+			let [hour, minute] = currentDate.toLocaleTimeString('en-US').split(/:| /)
+
+			const formatDate = `${currentMonth}/${currentDay}/${currentYear} at ${hour}:${minute}`
+			const data = {
+				...payload,
+				userId: state.userID,
+				timeStamp: formatDate,
+				productId: state.productId,
+				trackingId: state.trackingId,
+			}
+			try {
+				const res = await axios.post('http://localhost:3000/', data)
+			} catch (err) {
+				console.log(err, 'not able to dispatch userBehavior')
+			}
+		},
+	},
 	modules: {},
 })

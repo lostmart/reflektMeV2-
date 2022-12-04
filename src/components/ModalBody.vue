@@ -2,6 +2,9 @@
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
+	import { useRouter } from 'vue-router'
+
+	const router = useRouter()
 
 	const emit = defineEmits(['zoomCoord'])
 
@@ -12,12 +15,18 @@
 	const toggleFullScreen = () => {
 		store.commit('toggleFullScreenModal', true)
 		store.commit('toggleDesktopZoom', false)
+		store.dispatch('userBehavior', {
+			btn: 'fullScreen',
+		})
 	}
 
-	const toggleShareModal = () => {
-		store.commit('toggleModal', true)
-		store.commit('toggleShareModal', true)
+	const handleShareClick = () => {
+		router.push('/share')
+		store.dispatch('userBehavior', {
+			btn: 'share',
+		})
 	}
+
 	const triggerZoom = (e) => {
 		const img = image.value.getBoundingClientRect()
 		const zoomX = e.pageX - img.left
@@ -29,8 +38,8 @@
 <template>
 	<section class="flex items-end mt-6 md:block md:relative">
 		<div
-			class="flex items-end h-[283px] translate-x-4 md:absolute z-50 md:bottom-0 md:-left-[1em] md:bg-[#ffffff87] md:h-full">
-			<span v-if="store.state.activeItem" class="block rotate-90 p-2">
+			class="flex items-end h-[283px] translate-x-2 md:absolute z-50 md:bottom-0 md:-left-[1em] md:bg-[#ffffff87] md:h-full">
+			<span v-if="store.state.activeItem" class="block rotate-90 pl-1 pb-2">
 				{{ store.state.activeThumbnail + 1 }} /
 				{{ store.state.activeItem.options.length }}
 			</span>
@@ -51,10 +60,10 @@
 				@onmousemove="triggerZoom(e)"
 				class="min-w-fit mx-auto z-40" />
 		</div>
-		<router-link
-			to="/share"
+		<button
+			@click="handleShareClick"
 			class="md:translate-x-[-10px] md:absolute md:transform-none right-4 top-2 z-50">
 			<img :src="shareBtn" alt="share button" />
-		</router-link>
+		</button>
 	</section>
 </template>
