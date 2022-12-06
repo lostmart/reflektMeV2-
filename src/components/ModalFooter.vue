@@ -3,7 +3,7 @@
 </script>
 
 <template>
-	<footer class="flex items-center justify-center pb-4">
+	<footer class="flex items-center justify-center translate-y-[0.7rem]">
 		<span class="text-levisGray text-xs">powered by now</span>
 		<img :src="reflektMeIcon" alt="powered by refleKtMe" class="ml-2" />
 	</footer>

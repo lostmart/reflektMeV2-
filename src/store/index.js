@@ -59,7 +59,7 @@ export default createStore({
 			const data = {
 				...payload,
 				userId: state.userID,
-				timeStamp: formatDate,
+				localTime: formatDate,
 				productId: state.productId,
 				trackingId: state.trackingId,
 			}

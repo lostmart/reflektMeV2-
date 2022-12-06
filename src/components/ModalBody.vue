@@ -59,11 +59,11 @@
 				alt="levis image"
 				@onmousemove="triggerZoom(e)"
 				class="min-w-fit mx-auto z-40" />
+			<button
+				@click="handleShareClick"
+				class="md:translate-x-[-10px] md:absolute md:transform-none right-[1em] top-[1.2em] z-50">
+				<img :src="shareBtn" alt="share button" />
+			</button>
 		</div>
-		<button
-			@click="handleShareClick"
-			class="md:translate-x-[-10px] md:absolute md:transform-none right-4 top-2 z-50">
-			<img :src="shareBtn" alt="share button" />
-		</button>
 	</section>
 </template>

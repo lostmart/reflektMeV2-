@@ -9,7 +9,7 @@
 		class="absolute left-[50%] translate-x-[-50%] top-2 inset-y-1 bg-white w-11/12 h-screen max-w-screen-sm md:max-w-xl">
 		<ModalHeader />
 		<div
-			class="flex items-center justify-center overflow-hidden max-h-[356px] max-w-[286px] m-auto">
+			class="flex items-center justify-center overflow-hidden max-h-[422px] max-w-[315px] m-auto">
 			<img :src="store.state.activeImg" alt="" class="min-w-[800px]" />
 		</div>
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
