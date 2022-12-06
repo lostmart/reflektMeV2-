@@ -20,7 +20,9 @@
 		})
 	}
 
-	const handleShareClick = () => {
+	const handleShareClick = (e) => {
+		e.stopPropagation()
+		store.commit('toggleDesktopZoom', false)
 		router.push('/share')
 		store.dispatch('userBehavior', {
 			btn: 'share',
