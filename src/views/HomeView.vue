@@ -19,18 +19,19 @@
 	const zoomCoordData = ref({ zoomX: '', zoomY: '' })
 	const ratio = 0.6367
 	const handleZoom = (data) => {
-		zoomCoordData.value.zoomX = 180 + data.zoomX / 2.8
-		zoomCoordData.value.zoomY = data.zoomY / 2
+		zoomCoordData.value.zoomX = -35 + data.zoomX * 2.7
+		zoomCoordData.value.zoomY = -80 + data.zoomY * 3
 	}
 	/* data fetch */
 	const fetchData = async () => {
 		try {
-			const response = await fetch('/data.json')
+			// const response = await fetch('/data.json')
+			const response = await fetch('/new-data.json')
 			const jsonData = await response.json()
-			// console.log(jsonData.data)
+			console.log(jsonData.data)
 			store.commit('setMediaArray', jsonData.data)
 			store.commit('setActiveItem', jsonData.data[0])
-			store.commit('setActiveImg', jsonData.data[0].options[0].imgUrl)
+			store.commit('setActiveImg', jsonData.data[0])
 		} catch (err) {
 			/* REVISAR ERROR HANDLERS !!!  */
 			console.log(err, 'todo esta muy mal !!!')
@@ -67,12 +68,12 @@
 					<!---  ZOOMED CONTAINER  -->
 					<div
 						v-if="store.state.desktopZoom"
-						class="mt-9 h-[39rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
+						class="h-[35rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
 						ref="imageCont">
 						<div
 							class="w-full h-full zoomedImg"
 							:style="{
-								backgroundImage: 'url(' + store.state.activeImg + ')',
+								backgroundImage: 'url(' + store.state.zoomedImg + ')',
 								backgroundPosition:
 									'-' +
 									zoomCoordData.zoomX +
@@ -112,7 +113,7 @@
 				</button>
 				<img
 					class="min-w-[835px]"
-					:src="store.state.activeImg"
+					:src="store.state.activeImg.smallOpt.hero"
 					alt="full screen size image" />
 			</div>
 		</full-screen-modal>
@@ -132,7 +133,7 @@
 <style scoped>
 	.zoomedImg {
 		background-repeat: no-repeat;
-		transform: scale(2.2) translate(90px, 150px);
+		transform: scale(2) translate(90px, 139px);
 	}
 	footer {
 		font-family: 'Helvetica Now Text ';

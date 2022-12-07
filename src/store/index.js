@@ -7,6 +7,7 @@ export default createStore({
 		showFullScreenModal: false,
 		shareModal: false,
 		activeItem: null,
+		zoomedImg: '',
 		activeImg: '',
 		mediaArray: [],
 		activeMediaInd: 0,
@@ -45,6 +46,9 @@ export default createStore({
 		},
 		toggleDesktopZoom(state, payload) {
 			state.desktopZoom = payload
+		},
+		setZoomedImg(state, payload) {
+			state.zoomedImg = payload
 		},
 	},
 	actions: {

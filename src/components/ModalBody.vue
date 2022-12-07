@@ -1,4 +1,5 @@
 <script setup>
+	import axios from 'axios'
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
@@ -20,6 +21,18 @@
 		})
 	}
 
+	const getZoomedImg = async () => {
+		console.log('get imgae !!')
+		try {
+			const response = await axios.get('/big-data.json')
+			console.log(response.data.data[0])
+			let newZoomedImg = response.data.data[0].zoomOpt
+			store.commit('setZoomedImg', newZoomedImg)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+
 	const handleShareClick = (e) => {
 		e.stopPropagation()
 		store.commit('toggleDesktopZoom', false)
@@ -30,6 +43,7 @@
 	}
 
 	const triggerZoom = (e) => {
+		getZoomedImg()
 		const img = image.value.getBoundingClientRect()
 		const zoomX = e.pageX - img.left
 		const zoomY = e.pageY - img.top
@@ -43,7 +57,7 @@
 			class="flex items-end h-[283px] translate-x-2 md:absolute z-50 md:bottom-0 md:-left-[1em] md:bg-[#ffffff87] md:h-full">
 			<span v-if="store.state.activeItem" class="block rotate-90 pl-1 pb-2">
 				{{ store.state.activeThumbnail + 1 }} /
-				{{ store.state.activeItem.options.length }}
+				{{ store.state.activeThumbnail }}
 			</span>
 		</div>
 		<div
@@ -57,10 +71,10 @@
 			ref="image">
 			<img
 				v-if="store.state.activeItem"
-				:src="store.state.activeImg"
+				:src="store.state.activeImg.smallOpt[0].hero"
 				alt="levis image"
 				@onmousemove="triggerZoom(e)"
-				class="min-w-fit mx-auto z-40" />
+				class="mx-auto z-40" />
 			<button
 				@click="handleShareClick"
 				class="md:translate-x-[-10px] md:absolute md:transform-none right-[1em] top-[1.2em] z-50">

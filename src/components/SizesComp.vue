@@ -18,12 +18,7 @@
 			<button
 				v-for="(btn, ind) in store.state.mediaArray"
 				class="w-[48.3px] h-[48.3px] border-brandDarkGray rounded-sm"
-				:class="{
-					disabled: btn.options.length === 0,
-					border: ind === store.state.activeMediaInd,
-				}"
-				@click="handleChange(ind)"
-				:disabled="btn.options.length === 0">
+				@click="handleChange(ind)">
 				{{ btn.size }}
 			</button>
 		</div>
@@ -36,3 +31,17 @@
 		color: #c5b7b7;
 	}
 </style>
+
+<script>
+	/*
+:disabled="btn.options.length === 0"
+
+
+:class="{
+					disabled: btn.options.length === 0,
+					border: ind === store.state.activeMediaInd,
+				}"
+
+
+*/
+</script>

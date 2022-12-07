@@ -1,0 +1,59 @@
+{
+	"data": [
+		{
+			"id": "sdkfjvgskdjvsdv465465",
+			"size": "A",
+			"smallOpt": [
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail.webp",
+					"hero": "/imgs/new-imgs/A/A_Hero.webp",
+					"altTxt": "small size dress"
+				}
+			]
+		},
+		{
+			"id": "hhhh4sdfsdfaz132112",
+			"size": "B",
+			"smallOpt": [
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-02.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-02.jpg",
+					"altTxt": "small size dress"
+				}
+			]
+		},
+		{
+			"id": "5s4dfssdfsdfaz132112",
+			"size": "C",
+			"smallOpt": [
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-03.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-03.jpg",
+					"altTxt": "small size dress"
+				}
+			]
+		},
+		{
+			"id": "lklksd4ssdfsdfaz1322",
+			"size": "D",
+			"smallOpt": [
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-04.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-04.jpg",
+					"altTxt": "small size dress"
+				}
+			]
+		},
+		{
+			"id": "fgfdsdfsdf45lkrm2mss12",
+			"size": "E",
+			"smallOpt": [
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-05.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-05.jpg",
+					"altTxt": "small size dress"
+				}
+			]
+		}
+	]
+}

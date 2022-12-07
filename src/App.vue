@@ -13,21 +13,6 @@
 		zoomCoordData.value.zoomX = 180 + data.zoomX / 2.8
 		zoomCoordData.value.zoomY = data.zoomY / 2
 	}
-	/* data fetch */
-	const fetchData = async () => {
-		try {
-			const response = await fetch('/data.json')
-			const jsonData = await response.json()
-			// console.log(jsonData.data)
-			store.commit('setMediaArray', jsonData.data)
-			store.commit('setActiveItem', jsonData.data[0])
-			store.commit('setActiveImg', jsonData.data[0].options[0].imgUrl)
-		} catch (err) {
-			/* REVISAR ERROR HANDLERS !!!  */
-			console.log(err, 'todo esta muy mal !!!')
-		}
-	}
-	fetchData()
 </script>
 
 <template>
