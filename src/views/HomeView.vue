@@ -19,8 +19,8 @@
 	const zoomCoordData = ref({ zoomX: '', zoomY: '' })
 	const ratio = 0.6367
 	const handleZoom = (data) => {
-		zoomCoordData.value.zoomX = -35 + data.zoomX * 2.7
-		zoomCoordData.value.zoomY = -80 + data.zoomY * 3
+		zoomCoordData.value.zoomX = -35 + data.zoomX * 2.9
+		zoomCoordData.value.zoomY = -80 + data.zoomY * 3.2
 	}
 	/* data fetch */
 	const fetchData = async () => {

@@ -2,8 +2,8 @@
 	import { useStore } from 'vuex'
 	const store = useStore()
 
-	const changeActive = (img, indx) => {
-		store.commit('setActiveImg', img)
+	const changeActive = (indx) => {
+		store.commit('setActiveImg', store.state.mediaArray[indx])
 		store.commit('setActiveThumbnail', indx)
 		store.dispatch('userBehavior', {
 			btn: 'thumbnails',
@@ -15,14 +15,16 @@
 	<section class="mt-5 pb-4 border-b-2 border-lightGray md:border-none">
 		<div class="flex justify-around md:flex-col md:h-full">
 			<button
-				v-if="store.state.activeImg"
-				v-for="(img, indx) in store.state.activeItem.options"
+				v-if="store.state.activeImg.smallOpt"
+				v-for="(img, indx) in store.state.activeItem.smallOpt"
 				:key="indx"
-				@click="changeActive(img.imgUrl, indx)"
+				@click="changeActive(indx)"
 				class="flex justify-center items-center truncate w-[91px] h-[115px] border-4 border-white relative translate-x-2"
-				:class="{ 'active-btn': img.imgUrl === store.state.activeImg }">
+				:class="{
+					'active-btn': img.hero === store.state.activeImg.smallOpt[0].hero,
+				}">
 				<div class="flex justify-center items-center w-full thumb-btn">
-					<img :src="img.imgUrl" :alt="img.altTxt" class="min-w-[190px]" />
+					<img :src="img.thumbnail" :alt="img.altTxt" />
 				</div>
 			</button>
 		</div>

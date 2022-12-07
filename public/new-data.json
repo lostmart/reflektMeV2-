@@ -8,6 +8,21 @@
 					"thumbnail": "/imgs/new-imgs/A/A_thumbnail.webp",
 					"hero": "/imgs/new-imgs/A/A_Hero.webp",
 					"altTxt": "small size dress"
+				},
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-02.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-02.jpg",
+					"altTxt": "small size dress"
+				},
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-03.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-03.jpg",
+					"altTxt": "small size dress"
+				},
+				{
+					"thumbnail": "/imgs/new-imgs/A/A_thumbnail-04.jpg",
+					"hero": "/imgs/new-imgs/A/A_Hero-04.jpg",
+					"altTxt": "small size dress"
 				}
 			]
 		},

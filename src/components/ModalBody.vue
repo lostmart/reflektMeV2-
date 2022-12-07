@@ -21,11 +21,11 @@
 		})
 	}
 
+	// brings the zoomed image on hover (desktop only)
 	const getZoomedImg = async () => {
 		console.log('get imgae !!')
 		try {
 			const response = await axios.get('/big-data.json')
-			console.log(response.data.data[0])
 			let newZoomedImg = response.data.data[0].zoomOpt
 			store.commit('setZoomedImg', newZoomedImg)
 		} catch (err) {
@@ -54,21 +54,21 @@
 <template>
 	<section class="flex items-end mt-6 md:block md:relative">
 		<div
-			class="flex items-end h-[283px] translate-x-2 md:absolute z-50 md:bottom-0 md:-left-[1em] md:bg-[#ffffff87] md:h-full">
-			<span v-if="store.state.activeItem" class="block rotate-90 pl-1 pb-2">
-				{{ store.state.activeThumbnail + 1 }} /
-				{{ store.state.activeThumbnail }}
-			</span>
-		</div>
-		<div
 			role="button"
 			aria-pressed="false"
 			@click="toggleFullScreen"
 			@mousemove="triggerZoom"
 			@mouseenter="store.commit('toggleDesktopZoom', true)"
 			@mouseleave="store.commit('toggleDesktopZoom', false)"
-			class="img-container flex justify-center items-center overflow-hidden mx-auto w-[255px] max-w-[405px] h-[340px] md:relative md:w-full md:h-full md:top-0"
+			class="img-container flex justify-center items-center mx-auto w-[255px] max-w-[405px] h-[340px] relative md:w-full md:h-full md:top-0"
 			ref="image">
+			<div
+				class="flex items-end left-[0px] -translate-x-8 absolute z-50 md:bottom-0 md:-left-[1em] bg-[#ffffff87] h-full">
+				<span v-if="store.state.activeItem" class="block mb-2 rotate-90">
+					{{ store.state.activeThumbnail + 1 }} /
+					{{ store.state.activeItem.smallOpt.length }}
+				</span>
+			</div>
 			<img
 				v-if="store.state.activeItem"
 				:src="store.state.activeImg.smallOpt[0].hero"
@@ -77,7 +77,7 @@
 				class="mx-auto z-40" />
 			<button
 				@click="handleShareClick"
-				class="md:translate-x-[-10px] md:absolute md:transform-none right-[1em] top-[1.2em] z-50">
+				class="md:translate-x-[-10px] right-0 translate-x-12 bottom-0 absolute md:transform-none md:right-[1em] md:top-[1.2em] md:h-2 z-50">
 				<img :src="shareBtn" alt="share button" />
 			</button>
 		</div>
