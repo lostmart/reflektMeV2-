@@ -13,12 +13,21 @@
 
 	const image = ref()
 
-	const toggleFullScreen = () => {
-		store.commit('toggleFullScreenModal', true)
-		store.commit('toggleDesktopZoom', false)
-		store.dispatch('userBehavior', {
-			btn: 'fullScreen',
-		})
+	const toggleFullScreen = async () => {
+		try {
+			const localActiveThumbnail = store.state.activeThumbnail
+			console.log(localActiveThumbnail)
+			const response = await axios.get('/big-data.json')
+			const fullScreenImg = response.data.data[localActiveThumbnail].fullScreeen
+			store.commit('setFullScreenImg', fullScreenImg)
+			store.commit('toggleFullScreenModal', true)
+			store.commit('toggleDesktopZoom', false)
+			store.dispatch('userBehavior', {
+				btn: 'fullScreen',
+			})
+		} catch (err) {
+			console.log(err)
+		}
 	}
 
 	// brings the zoomed image on hover (desktop only)
@@ -26,8 +35,10 @@
 		console.log('get imgae !!')
 		try {
 			const response = await axios.get('/big-data.json')
-			let newZoomedImg = response.data.data[0].zoomOpt
+			const newZoomedImg = response.data.data[0].zoomOpt
+			const fullScreenImg = response.data.data[0].fullScreeen
 			store.commit('setZoomedImg', newZoomedImg)
+			store.commit('setFullScreenImg', fullScreenImg)
 		} catch (err) {
 			console.log(err)
 		}

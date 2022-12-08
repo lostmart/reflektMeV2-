@@ -104,7 +104,7 @@
 			class="absolute left-[50%] translate-x-[-50%] top-2"
 			v-if="store.state.showFullScreenModal">
 			<div
-				class="flex items-center justify-center relative max-w-[375px] overflow-hidden m-auto">
+				class="flex items-center justify-center relative max-w-[890px] overflow-hidden m-auto">
 				<button
 					class="absolute w-[40px] top-2 right-2 bg-white rounded-full p-2"
 					@click="store.commit('toggleFullScreenModal', null)"
@@ -112,8 +112,8 @@
 					<img :src="closeBtn" alt="close button" />
 				</button>
 				<img
-					class="min-w-[835px]"
-					:src="store.state.activeImg.smallOpt.hero"
+					class=""
+					:src="store.state.fullScreenImg"
 					alt="full screen size image" />
 			</div>
 		</full-screen-modal>

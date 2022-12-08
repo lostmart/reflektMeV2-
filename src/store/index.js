@@ -13,6 +13,7 @@ export default createStore({
 		activeMediaInd: 0,
 		activeThumbnail: 0,
 		desktopZoom: false,
+		fullScreenImg: '',
 		// agent data
 		userID: Math.floor(Math.random() * 1000000),
 		productId: 'temporary product ID',
@@ -49,6 +50,9 @@ export default createStore({
 		},
 		setZoomedImg(state, payload) {
 			state.zoomedImg = payload
+		},
+		setFullScreenImg(state, payload) {
+			state.fullScreenImg = payload
 		},
 	},
 	actions: {
