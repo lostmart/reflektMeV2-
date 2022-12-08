@@ -85,7 +85,7 @@
 		</transition>
 
 		<full-screen-modal
-			class="absolute left-[50%] translate-x-[-50%] top-2"
+			class="absolute left-[50%] translate-x-[-50%] top-4"
 			v-if="store.state.showFullScreenModal">
 			<div
 				class="flex items-center justify-center relative max-w-[890px] overflow-hidden m-auto">
