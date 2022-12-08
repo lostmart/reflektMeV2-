@@ -6,9 +6,8 @@ export default createStore({
 		showModal: true,
 		showFullScreenModal: false,
 		shareModal: false,
-		activeItem: null,
 		zoomedImg: '',
-		activeImg: '',
+		activeImg: null,
 		mediaArray: [],
 		activeMediaInd: 0,
 		activeThumbnail: 0,
@@ -29,9 +28,6 @@ export default createStore({
 		},
 		toggleShareModal(state) {
 			state.shareModal = !state.shareModal
-		},
-		setActiveItem(state, payload) {
-			state.activeItem = payload
 		},
 		setActiveImg(state, payload) {
 			state.activeImg = payload

@@ -2,9 +2,8 @@
 	import { useStore } from 'vuex'
 	const store = useStore()
 	const handleChange = (num) => {
-		store.commit('setActiveItem', store.state.mediaArray[num])
-		store.commit('setActiveImg', store.state.activeItem.options[0].imgUrl)
 		store.commit('setActiveMediaInd', num)
+		store.commit('setActiveImg', store.state.mediaArray[num])
 		store.commit('setActiveThumbnail', 0)
 		store.dispatch('userBehavior', {
 			btn: 'sizes',
@@ -18,6 +17,11 @@
 			<button
 				v-for="(btn, ind) in store.state.mediaArray"
 				class="w-[48.3px] h-[48.3px] border-brandDarkGray rounded-sm"
+				:disabled="btn.smallOpt.length === 0"
+				:class="{
+					disabled: btn.smallOpt.length === 0,
+					border: ind === store.state.activeMediaInd,
+				}"
 				@click="handleChange(ind)">
 				{{ btn.size }}
 			</button>

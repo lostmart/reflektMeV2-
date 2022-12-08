@@ -1,5 +1,4 @@
 <script setup>
-	import axios from 'axios'
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
 	import shareBtn from '../assets/share-btn.svg'
@@ -13,35 +12,27 @@
 
 	const image = ref()
 
-	const toggleFullScreen = async () => {
-		try {
-			const localActiveThumbnail = store.state.activeThumbnail
-			console.log(localActiveThumbnail)
-			const response = await axios.get('/big-data.json')
-			const fullScreenImg = response.data.data[localActiveThumbnail].fullScreeen
-			store.commit('setFullScreenImg', fullScreenImg)
-			store.commit('toggleFullScreenModal', true)
-			store.commit('toggleDesktopZoom', false)
-			store.dispatch('userBehavior', {
-				btn: 'fullScreen',
-			})
-		} catch (err) {
-			console.log(err)
-		}
+	const toggleFullScreen = () => {
+		const localActiveThumbnail = store.state.activeThumbnail
+		const fullScreenImg =
+			store.state.activeImg.bigSizes[localActiveThumbnail].fullScreeen
+		store.commit('setFullScreenImg', fullScreenImg)
+		store.commit('toggleFullScreenModal', true)
+		store.commit('toggleDesktopZoom', false)
+		store.dispatch('userBehavior', {
+			btn: 'fullScreen',
+		})
 	}
 
 	// brings the zoomed image on hover (desktop only)
 	const getZoomedImg = async () => {
-		console.log('get imgae !!')
-		try {
-			const response = await axios.get('/big-data.json')
-			const newZoomedImg = response.data.data[0].zoomOpt
-			const fullScreenImg = response.data.data[0].fullScreeen
-			store.commit('setZoomedImg', newZoomedImg)
-			store.commit('setFullScreenImg', fullScreenImg)
-		} catch (err) {
-			console.log(err)
-		}
+		const localActiveThumbnail = store.state.activeThumbnail
+		const newZoomedImg =
+			store.state.activeImg.bigSizes[localActiveThumbnail].zoomOpt
+		const fullScreenImg =
+			store.state.activeImg.bigSizes[localActiveThumbnail].fullScreeen
+		store.commit('setZoomedImg', newZoomedImg)
+		store.commit('setFullScreenImg', fullScreenImg)
 	}
 
 	const handleShareClick = (e) => {
@@ -75,14 +66,14 @@
 			ref="image">
 			<div
 				class="flex items-end left-[0px] -translate-x-8 absolute z-50 md:bottom-0 md:-left-[1em] bg-[#ffffff87] h-full">
-				<span v-if="store.state.activeItem" class="block mb-2 rotate-90">
+				<span v-if="store.state.activeImg" class="block mb-2 rotate-90">
 					{{ store.state.activeThumbnail + 1 }} /
-					{{ store.state.activeItem.smallOpt.length }}
+					{{ store.state.activeImg.smallOpt.length }}
 				</span>
 			</div>
 			<img
-				v-if="store.state.activeItem"
-				:src="store.state.activeImg.smallOpt[0].hero"
+				v-if="store.state.activeImg"
+				:src="store.state.activeImg.smallOpt[store.state.activeThumbnail].hero"
 				alt="levis image"
 				@onmousemove="triggerZoom(e)"
 				class="mx-auto z-40" />

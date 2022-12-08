@@ -17,7 +17,6 @@
 		store.commit('toggleModal', null)
 	}
 	const zoomCoordData = ref({ zoomX: '', zoomY: '' })
-	const ratio = 0.6367
 	const handleZoom = (data) => {
 		zoomCoordData.value.zoomX = -35 + data.zoomX * 2.9
 		zoomCoordData.value.zoomY = -80 + data.zoomY * 3.2
@@ -30,7 +29,6 @@
 			const jsonData = await response.json()
 			console.log(jsonData.data)
 			store.commit('setMediaArray', jsonData.data)
-			store.commit('setActiveItem', jsonData.data[0])
 			store.commit('setActiveImg', jsonData.data[0])
 		} catch (err) {
 			/* REVISAR ERROR HANDLERS !!!  */
@@ -81,20 +79,6 @@
 									zoomCoordData.zoomY +
 									'px',
 							}"></div>
-						<!--- 
-						<img
-						class="absolute min-w-[1090px]"
-						:style="{
-							transform:
-							'translate(-' +
-							zoomCoordData.zoomX +
-							'px,  -' +
-							+zoomCoordData.zoomY +
-							'px) scale(2)',
-						}"
-						:src="store.state.activeImg"
-						alt="see it in my size" />
-					-->
 					</div>
 				</div>
 			</primary-modal>
