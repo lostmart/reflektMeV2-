@@ -29,8 +29,14 @@
 				:src="icon"
 				alt="Levis Icon"
 				class="absolute left-[51%] translate-x-[-50%]" />
-			<button @click="haddleClick" class="w-[40px] p-2 m-2" aria-label="Close">
-				<img :src="closeBtn" alt="close button" />
+			<button
+				@click="haddleClick"
+				class="w-[40px] p-2 m-2 mr-0 mt-0 pt-0 pr-0"
+				aria-label="Close">
+				<img
+					:src="closeBtn"
+					alt="close button"
+					class="max-w-[24px] translate-x-2" />
 			</button>
 		</div>
 		<h2 class="text-center text-redPrimary text-lg uppercase font-bold">

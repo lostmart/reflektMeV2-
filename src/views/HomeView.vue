@@ -66,7 +66,7 @@
 					<!---  ZOOMED CONTAINER  -->
 					<div
 						v-if="store.state.desktopZoom"
-						class="h-[35rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative"
+						class="h-[33.7rem] w-1/2 max-w-[605px] bg-slate-300 flex items-center justify-center overflow-hidden relative translate-y-6"
 						ref="imageCont">
 						<div
 							class="w-full h-full zoomedImg"
@@ -117,7 +117,7 @@
 <style scoped>
 	.zoomedImg {
 		background-repeat: no-repeat;
-		transform: scale(2) translate(90px, 139px);
+		transform: scale(2) translate(90px, 134px);
 	}
 	footer {
 		font-family: 'Helvetica Now Text ';
