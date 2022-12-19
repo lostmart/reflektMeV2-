@@ -2,6 +2,10 @@
 	import { useStore } from 'vuex'
 	import ModalHeader from '../components/ModalHeader.vue'
 	const store = useStore()
+	const handleShare = () => {
+		const imgUrl = location.host + store.state.fullScreenImg
+		console.log(imgUrl)
+	}
 </script>
 
 <template>
@@ -15,8 +19,12 @@
 				alt="reflektMe share image" />
 		</div>
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
-			Check out my Levis.com Reflektion for (insert product name and link here)
+			Check out my Levis.com Reflektion for {{ store.state.userID }}
 		</p>
-		<button class="mt-8 block mx-auto text-center border p-4">Copy link</button>
+		<button
+			@click="handleShare"
+			class="mt-8 block mx-auto text-center border p-4">
+			Copy link
+		</button>
 	</div>
 </template>
