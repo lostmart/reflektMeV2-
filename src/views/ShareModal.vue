@@ -16,13 +16,13 @@
 			class="flex items-center justify-center overflow-hidden max-h-[422px] max-w-[315px] m-auto">
 			<img
 				:src="store.state.activeImg.smallOpt[store.state.activeThumbnail].hero"
-				alt="reflektMe share image" />
+				:alt="
+					store.state.activeImg.smallOpt[store.state.activeThumbnail].altTxt
+				" />
 		</div>
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
 			Check out my
-			{{
-				store.state.activeImg.smallOpt[store.state.activeThumbnail].altTxt
-			}}
+			{{ store.state.activeImg.smallOpt[store.state.activeThumbnail].altTxt }}
 			Reflektion
 		</p>
 		<button
