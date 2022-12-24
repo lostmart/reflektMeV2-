@@ -17,6 +17,10 @@ export default createStore({
 		userID: Math.floor(Math.random() * 1000000),
 		productId: 'temporary product ID',
 		trackingId: 'some tracking ID',
+		/*  URLS   */
+		url_meta: '',
+		url_assets: '',
+		url_widget: '',
 	},
 	getters: {},
 	mutations: {

@@ -36,6 +36,15 @@
 		}
 	}
 	fetchData()
+	/* 
+
+	buscar el client_id luego el product_id
+	y luego permitir cuales son las urls que se pueden utilizar
+
+
+	del json solo usar names y id's
+	las medias no
+	*/
 </script>
 
 <template>

@@ -19,7 +19,11 @@
 				alt="reflektMe share image" />
 		</div>
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
-			Check out my Levis.com Reflektion for {{ store.state.userID }}
+			Check out my
+			{{
+				store.state.activeImg.smallOpt[store.state.activeThumbnail].altTxt
+			}}
+			Reflektion
 		</p>
 		<button
 			@click="handleShare"
