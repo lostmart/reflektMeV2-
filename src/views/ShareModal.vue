@@ -22,8 +22,8 @@
 		</div>
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
 			Check out my
-			{{ store.state.activeImg.smallOpt[store.state.activeThumbnail].altTxt }}
-			Reflektion
+			<!--  name VALUE from API    -->
+			XS Reflektion
 		</p>
 		<button
 			@click="handleShare"

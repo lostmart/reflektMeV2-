@@ -13,10 +13,14 @@ export default createStore({
 		activeThumbnail: 0,
 		desktopZoom: false,
 		fullScreenImg: '',
+
 		// agent data
-		userID: Math.floor(Math.random() * 1000000),
-		productId: 'temporary product ID',
-		trackingId: 'some tracking ID',
+		userData: {
+			clientID: null,
+			productId: null,
+			trackingId: null,
+		},
+
 		/*  URLS   */
 		url_meta: '',
 		url_assets: '',
@@ -53,6 +57,9 @@ export default createStore({
 		},
 		setFullScreenImg(state, payload) {
 			state.fullScreenImg = payload
+		},
+		setUserData(state, payload) {
+			state.userData = payload
 		},
 	},
 	actions: {

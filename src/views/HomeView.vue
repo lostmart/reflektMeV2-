@@ -1,6 +1,7 @@
 <script setup>
 	import { ref } from 'vue'
 	import { useStore } from 'vuex'
+	import fetchData from '../composable/FetchData'
 	import PrimaryModal from './PrimaryModal.vue'
 	import FullScreenModal from './FullScreenModal.vue'
 	// import ShareModal from './ShareModal.vue'
@@ -11,7 +12,23 @@
 	import ButtonComp from '../components/ButtonComp.vue'
 	import ModalFooter from '../components/ModalFooter.vue'
 	import closeBtn from '../assets/x.svg'
+
+	// importing composable
+	const { load } = fetchData()
 	const store = useStore()
+
+	load()
+
+	/*
+	const localUserData = ref({
+		clientId: route.query.clientId,
+		productId: route.query.productId,
+		trackingId: route.query.trackingId,
+	})
+
+	store.commit('setUserData', localUserData)
+	*/
+
 	const imageCont = ref()
 	const toggleModal = () => {
 		store.commit('toggleModal', null)
@@ -21,7 +38,7 @@
 		zoomCoordData.value.zoomX = -35 + data.zoomX * 2.9
 		zoomCoordData.value.zoomY = -80 + data.zoomY * 3.2
 	}
-	/* data fetch */
+	/* data fetch 
 	const fetchData = async () => {
 		try {
 			// const response = await fetch('/data.json')
@@ -31,11 +48,12 @@
 			store.commit('setMediaArray', jsonData.data)
 			store.commit('setActiveImg', jsonData.data[0])
 		} catch (err) {
-			/* REVISAR ERROR HANDLERS !!!  */
 			console.log(err, 'todo esta muy mal !!!')
 		}
 	}
 	fetchData()
+	*/
+
 	/* 
 
 	buscar el client_id luego el product_id
