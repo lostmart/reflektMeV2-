@@ -38,6 +38,8 @@ export default fetchData
 versiones de imagenes
 
 
+temp id = Df9M11J8C1Oo5UjBBdffRA
+
 hero="$basename-hero.webp"
 thumbnail="$basename-thumbnail.webp"
 fullscreen="$basename-fullscreen.webp"

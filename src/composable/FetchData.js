@@ -1,9 +1,10 @@
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
-import idArrays from './idArray'
+//import idArrays from './idArray'
+import Media from '../models/DataModel'
 
-console.log(idArrays)
+//console.log(idArrays)
 
 const fetchData = () => {
 	const route = useRoute()
@@ -11,28 +12,40 @@ const fetchData = () => {
 	const media = ref([])
 	const error = ref(null)
 
-	const userData = {
+	const localUserData = {
 		clientId: route.query.clientId,
 		productId: route.query.productId,
 		trackingId: route.query.trackingId,
 	}
 
+	store.commit('setUserData', localUserData)
+
 	const load = async () => {
 		try {
-			// const response = await fetch('/data.json')
-			// const userId = store.state.clientId
-			const remote_url = `https://staging-meta.reflektme.app/${userData.clientId}/GORS1.json`
+			const remote_url = `https://staging-meta.reflektme.app/${localUserData.clientId}/GORS1.json`
 
-			const local_url = '/new-data.json'
+			// const local_url = '/new-data.json'
 			const response = await fetch(remote_url)
 			if (!response.ok) {
 				throw Error('no data available')
 			}
 
+			/*
+			code for the new version with json file
+			*/
+
 			const jsonData = await response.json()
-			console.log(jsonData)
-			store.commit('setMediaArray', jsonData.data)
-			store.commit('setActiveImg', jsonData.data[0])
+			let localMediaArr = []
+
+			// data refacturing to accommodate date to the API
+			jsonData.variants.forEach((media) => {
+				const photo = new Media(media)
+				console.log(photo.demoMedia)
+				localMediaArr.push(photo.demoMedia)
+			})
+
+			store.commit('setMediaArray', localMediaArr)
+			store.commit('setActiveImg', localMediaArr[0])
 		} catch (err) {
 			error.value = err.message
 			alert('no data from server')
