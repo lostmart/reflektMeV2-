@@ -31,7 +31,7 @@ class Media {
 			smallOpt.push(optionObj)
 
 			const bigObj = {
-				fullScreeen: `${rootMediaApp}${fileName}/${fileName}-fullscreen.webp`,
+				fullScreeen: `${rootMediaApp}/${fileName}/${fileName}-fullscreen.webp`,
 				zoomOpt: `${rootMediaApp}/${fileName}/${fileName}-zoom.webp`,
 			}
 			bigSizes.push(bigObj)
