@@ -1,17 +1,13 @@
 <script setup>
 	import { useStore } from 'vuex'
 	import { useRouter, useRoute } from 'vue-router'
-	import icon from '../assets/levis.svg'
-	import closeBtn from '../assets/x.svg'
+	import icon from '@/assets/levis.svg'
+	import closeBtn from '@/assets/x.svg'
 	const store = useStore()
 	const router = useRouter()
 	const route = useRoute()
 
 	const haddleClick = () => {
-		// store.state.showModal
-		// 	? store.commit('toggleModal', null)
-		// 	: store.commit('toggleShareModal', null),
-		// 	store.commit('toggleModal', null)
 		if (store.state.showModal) {
 			store.commit('toggleModal', null)
 			router.push('/')

@@ -11,7 +11,7 @@
 	import SizesComp from '../components/SizesComp.vue'
 	import ButtonComp from '../components/ButtonComp.vue'
 	import ModalFooter from '../components/ModalFooter.vue'
-	import closeBtn from '../assets/x.svg'
+	import closeBtn from '@/assets/x.svg'
 
 	// importing composable
 	const { load } = fetchData()
@@ -48,7 +48,7 @@
 			store.commit('setMediaArray', jsonData.data)
 			store.commit('setActiveImg', jsonData.data[0])
 		} catch (err) {
-			console.log(err, 'todo esta muy mal !!!')
+			console.log(err)
 		}
 	}
 	fetchData()
@@ -135,6 +135,7 @@
 		--></div>
 
 	<ButtonComp
+		v-if="store.state.valid"
 		@click="toggleModal"
 		class="mx-auto my-2 block p-4 border rounded-sm"
 		btnMsg="See It In My Size" />

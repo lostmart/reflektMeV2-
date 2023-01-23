@@ -45,6 +45,38 @@
 				without JavaScript enabled. Please enable it to continue.</strong
 			>
 		</noscript>
+		<script>
+			const date = new Date()
+			const dateString =
+				date.getFullYear() +
+				'' +
+				('0' + (date.getMonth() + 1)).slice(-2) +
+				'' +
+				('0' + date.getDate()).slice(-2) +
+				'' +
+				('0' + date.getHours()).slice(-2) +
+				'' +
+				('0' + date.getMinutes()).slice(-2) +
+				'' +
+				('0' + date.getSeconds()).slice(-2) +
+				'' +
+				('00' + date.getMilliseconds()).slice(-3)
+
+			class dataModel {
+				constructor(clientId, productId, trackingId) {
+					this.clientId = clientId ?? null
+					this.productId = productId ?? null
+					this.trackingId = trackingId ?? dateString
+				}
+			}
+
+			// this inits the data required
+			// first arg: clientId / Second arg: productId (Optional) / Third agr: (Optional)
+			//if no  argument is passed a String will be generated based on based on YYYYMMDDHHMMSSmmm time format
+			const initData = function () {
+				return new dataModel('Df9M11J8C1Oo5UjBBdffRA', 'some-cool-product-Id')
+			}
+		</script>
 		<div id="app"></div>
 		<!-- built files will be auto injected -->
 	</body>

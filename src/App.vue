@@ -14,13 +14,21 @@
 		zoomCoordData.value.zoomY = data.zoomY / 2
 	}
 </script>
+<script>
+	export default {
+		created() {
+			this.userData = initData()
+			console.log(this.userData)
+			this.$store.commit('setUserData', this.userData)
+		},
+		data() {
+			return {
+				userData: null,
+			}
+		},
+	}
+</script>
 
 <template>
-	<!--- 
-	<nav>
-		<router-link to="/">Home</router-link> |
-		<router-link to="/about">About</router-link>
-	</nav>
-	-->
 	<router-view />
 </template>

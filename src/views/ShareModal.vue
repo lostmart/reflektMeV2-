@@ -23,7 +23,8 @@
 		<p class="mt-8 mx-auto max-w-[286px] text-center">
 			Check out my
 			<!--  name VALUE from API    -->
-			XS Reflektion
+			{{ store.state.activeImg.size }}
+			Reflektion
 		</p>
 		<button
 			@click="handleShare"

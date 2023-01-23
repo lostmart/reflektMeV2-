@@ -35,17 +35,3 @@
 		color: #c5b7b7;
 	}
 </style>
-
-<script>
-	/*
-:disabled="btn.options.length === 0"
-
-
-:class="{
-					disabled: btn.options.length === 0,
-					border: ind === store.state.activeMediaInd,
-				}"
-
-
-*/
-</script>

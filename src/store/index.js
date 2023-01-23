@@ -3,7 +3,8 @@ import axios from 'axios'
 
 export default createStore({
 	state: {
-		showModal: true,
+		valid: false,
+		showModal: false,
 		showFullScreenModal: false,
 		shareModal: false,
 		zoomedImg: '',
@@ -61,6 +62,9 @@ export default createStore({
 		setUserData(state, payload) {
 			state.userData = payload
 		},
+		setValid(state, payload) {
+			state.valid = payload
+		},
 	},
 	actions: {
 		async userBehavior({ state }, payload) {
@@ -73,10 +77,10 @@ export default createStore({
 			const formatDate = `${currentMonth}/${currentDay}/${currentYear} at ${hour}:${minute}`
 			const data = {
 				...payload,
-				userId: state.userID,
+				userId: state.userData.userID,
 				localTime: formatDate,
-				productId: state.productId,
-				trackingId: state.trackingId,
+				productId: state.userData.productId,
+				trackingId: state.userData.trackingId,
 			}
 			try {
 				const res = await axios.post('http://localhost:3000/', data)
